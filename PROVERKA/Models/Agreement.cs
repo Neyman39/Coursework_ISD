@@ -19,11 +19,13 @@ public partial class Agreement
 
     public int? IdBranch { get; set; }
 
-    public virtual Agent? IdAgentNavigation { get; set; }
+    public decimal? AgentPremium { get; set; }
 
-    public virtual Branch? IdBranchNavigation { get; set; }
+    //public virtual Agent? IdAgentNavigation { get; set; }
 
-    public virtual Client? IdClientNavigation { get; set; }
+    //public virtual Branch? IdBranchNavigation { get; set; }
 
-    public virtual InsuranceType? IdInsuranceNavigation { get; set; }
+    //public virtual Client? IdClientNavigation { get; set; }
+
+    //public virtual InsuranceType? IdInsuranceNavigation { get; set; }
 }

@@ -22,9 +22,16 @@ namespace PROVERKA
         }
 
         // Реализация методов IDBAgent
-        public bool ClientCheck(int clientId)
+        public bool ClientCheck(string phone)
         {
-            return _context.ClientsQueues.Any(c => c.IdAgent == clientId);
+            return _context.Clients.Count(c => c.Phone == phone) > 0;
+        }
+
+        public Client GetClient(string phone)
+        {
+            return _context.Clients
+                .AsNoTracking()
+                .FirstOrDefault(c => c.Phone == phone);
         }
 
         public decimal CalculateInsuranceCost(int insuranceTypeId, Dictionary<int, string> fieldValues)
@@ -72,7 +79,7 @@ namespace PROVERKA
         public decimal CalculateCascoCost(Dictionary<int, string> fieldValues, decimal baseCost)
         {
             decimal cost = baseCost;
-
+            
             // Стаж вождения
             if (fieldValues.TryGetValue(GetFieldId("Стаж вождения"), out string expValue) &&
                 int.TryParse(expValue, out int experience))
@@ -89,6 +96,7 @@ namespace PROVERKA
                 if (power > 200) cost *= 1.5m;
                 else if (power > 150) cost *= 1.3m;
                 else if (power > 100) cost *= 1.1m;
+                else cost *= 1.0m;
             }
 
             return cost;
@@ -137,16 +145,6 @@ namespace PROVERKA
                 else if (area > 50) cost *= 1.1m;
             }
 
-            // Район
-            if (fieldValues.TryGetValue(GetFieldId("Район"), out string districtValue))
-            {
-                districtValue = districtValue.ToLower();
-
-                if (districtValue.Contains("центр")) cost *= 1.5m;
-                else if (districtValue.Contains("спальный")) cost *= 1.2m;
-                else if (districtValue.Contains("окраина")) cost *= 0.9m;
-            }
-
             return cost;
         }
 
@@ -156,52 +154,130 @@ namespace PROVERKA
             return _context.ClientsQueues.Any(a => a.Phone == document);
         }
 
-        public bool SaveAgreement(string document)
+        public bool CreateAgreement(decimal sumInsured, int? idAgent, int? idClient, int? branchId, int? insuranceId, decimal? agentPremium)
         {
             try
             {
-                // Логика сохранения договора
-                var agreement = new ClientQueue
+                var agreement = new Agreement
                 {
-                    //DocumentNumber = document,
-                    RegDate = DateTime.Now
-                    // Другие поля
+                    RegDate = DateTime.Now.ToString("yyyy-MM-dd"),
+                    SumInsured = sumInsured,
+                    IdAgent = idAgent,
+                    IdClient = idClient,
+                    IdBranch = branchId, // тут вставляешь актуальный IdBranch, либо передай через параметр.
+                    IdInsurance = insuranceId, // По умолчанию или передавай как параметр
+                    AgentPremium = agentPremium
                 };
 
-                //_context.Agreements.Add(agreement);
+                _context.Agreements.Add(agreement);
                 _context.SaveChanges();
+
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show($"Ошибка: {ex.Message}\n{ex.InnerException?.Message}");
                 return false;
             }
         }
 
+        public void RemoveClientFromQueue(int? clientId)
+        {
+            var clientQueueEntry = _context.ClientsQueues.FirstOrDefault(cq => cq.Id == clientId);
+            if (clientQueueEntry != null)
+            {
+                _context.ClientsQueues.Remove(clientQueueEntry);
+                _context.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Клиент не найден в очереди.");
+            }
+        }
+
+        //public bool SaveAgreement(string document)
+        //{
+        //    try
+        //    {
+        //        // Логика сохранения договора
+        //        var agreement = new ClientQueue
+        //        {
+        //            //DocumentNumber = document,
+        //            RegDate = DateTime.Now
+        //            // Другие поля
+        //        };
+
+        //        //_context.Agreements.Add(agreement);
+        //        _context.SaveChanges();
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
+
         public bool CreateClientAccount(string input)
         {
-            //try
-            //{
-            //    // Парсинг входных данных
-            //    var data = input.Split('|');
+            try
+            {
+                // Парсинг входных данных
+                var data = input.Split('|');
 
-            //    var client = new Client
-            //    {
-            //        FullName = data[0],
-            //        Phone = data[1],
-            //        Login = data[2],
-            //        Passwd = data[3] // В реальном приложении нужно хэшировать пароль
-            //    };
+                var client = new Client
+                {
+                    FullName = data[0],
+                    Phone = data[1],
+                    IdAgent = int.Parse(data[2]),
+                    Login = data[3],
+                    Passwd = data[4] // В реальном приложении нужно хэшировать пароль
+                };
 
-            //    _context.Clients.Add(client);
-            //    _context.SaveChanges();
-            //    return true;
-            //}
-            //catch
-            //{
-            //    return false;
-            //}
-            return false;
+                _context.Clients.Add(client);
+                _context.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}\n{ex.InnerException?.Message}");
+                return false;
+            }
+            //return false;
+        }
+
+        public ClientAgreementInfo GetClientAgreementInfo(int? clientId)
+        {
+            return _context.Agreements
+                .Where(a => a.IdClient == clientId)
+                .Join(_context.InsuranceTypes,
+                    a => a.IdInsurance,
+                    it => it.IdInsurance,
+                    (a, it) => new { Agreement = a, InsuranceType = it })
+                .Join(_context.Branches,
+                    ai => ai.Agreement.IdBranch,
+                    b => b.IdBranch,
+                    (ai, b) => new { ai.Agreement, ai.InsuranceType, Branch = b })
+                .Join(_context.Agents,
+                    aib => aib.Agreement.IdAgent,
+                    ag => ag.IdAgent,
+                    (aib, ag) => new ClientAgreementInfo
+                    {
+                        InsuranceTypeName = aib.InsuranceType.Name,
+                        AgreementDate = DateTime.Parse(aib.Agreement.RegDate),
+                        SumInsured = aib.Agreement.SumInsured,
+                        BranchAddress = aib.Branch.Adress,
+                        AgentFullName = ag.FullName
+                    })
+                .FirstOrDefault();
+        }
+
+        public class ClientAgreementInfo
+        {
+            public string InsuranceTypeName { get; set; }
+            public DateTime AgreementDate { get; set; }
+            public decimal? SumInsured { get; set; }
+            public string BranchAddress { get; set; }
+            public string AgentFullName { get; set; }
         }
 
         public List<InsuranceType> LoadingInsuranceTypes()
@@ -223,11 +299,11 @@ namespace PROVERKA
         public List<Field> LoadingInsuranceFields(int insuranceTypeId)
         {
             return _context.InsuranceTypeFields
-                .Where(itf => itf.IdInsurance == insuranceTypeId)  // Фильтр по id_insurance
-                .Join(_context.Fields,                                  // Соединяем с таблицей field
-                    itf => itf.IdField,                            // Поле из insurance_type_field
-                    f => f.IdField,                                // Поле из field
-                    (itf, f) => new Field                      // Результирующий объект
+                .Where(itf => itf.IdInsurance == insuranceTypeId)
+                .Join(_context.Fields,
+                    itf => itf.IdField,
+                    f => f.IdField,
+                    (itf, f) => new Field                      
                     {
                         IdField = f.IdField,
                         Name = f.Name,
@@ -254,7 +330,6 @@ namespace PROVERKA
         {
             try
             {
-                // Парсим строку с данными клиента (формат нужно уточнить)
                 var parts = client.Split('|');
 
                 var queueItem = new ClientQueue
@@ -274,12 +349,12 @@ namespace PROVERKA
                 return false;
             }
         }
+
         // Реализация методов IDBManager
         public bool SaveAgent(string agent)
         {
             try
             {
-                // Парсим строку с данными клиента (формат нужно уточнить)
                 var parts = agent.Split('|');
 
                 var queueItem = new Agent
@@ -318,10 +393,6 @@ namespace PROVERKA
             _context = context;
         }
 
-        /// <summary>
-        /// Создает начальную запись пользователя, если таблица Users пуста
-        /// </summary>
-        /// <returns>True - если запись была создана, False - если не была создана</returns>
         public bool InitializeDefaultUser()
         {
             try

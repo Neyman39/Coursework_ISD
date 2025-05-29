@@ -4,10 +4,12 @@ namespace PROVERKA
 {
     public interface IDBAgent
     {
-        bool ClientCheck(int clientId);
+        bool ClientCheck(string phone);
+        Client GetClient(string phone);
+        void RemoveClientFromQueue(int? clientId);
         bool AgreementCheck(string document);
-        bool SaveAgreement(string document);
         bool CreateClientAccount(string input);
+        bool CreateAgreement(decimal sumInsured, int? idAgent, int? idClient, int? branchId, int? insuranceId, decimal? agentPremium);
         List<InsuranceType> LoadingInsuranceTypes();
         List<Field> LoadingInsuranceFields(int typeOfInsurance);
         List<ClientQueue> LoadingClientsQueue();

@@ -25,6 +25,9 @@
             btnCancel = new Button();
             lblCost = new TextBox();
             lblCommission = new TextBox();
+            lblClientStatus = new Label();
+            btnCreateContract = new Button();
+            btnAddClient = new Button();
             SuspendLayout();
             // 
             // lblClientInfo
@@ -41,7 +44,7 @@
             // 
             comboBoxInsuranceType.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxInsuranceType.FormattingEnabled = true;
-            comboBoxInsuranceType.Location = new Point(200, 62);
+            comboBoxInsuranceType.Location = new Point(200, 96);
             comboBoxInsuranceType.Margin = new Padding(3, 4, 3, 4);
             comboBoxInsuranceType.Name = "comboBoxInsuranceType";
             comboBoxInsuranceType.Size = new Size(300, 28);
@@ -51,7 +54,7 @@
             // lblInsuranceType
             // 
             lblInsuranceType.AutoSize = true;
-            lblInsuranceType.Location = new Point(20, 66);
+            lblInsuranceType.Location = new Point(20, 100);
             lblInsuranceType.Name = "lblInsuranceType";
             lblInsuranceType.Size = new Size(130, 20);
             lblInsuranceType.TabIndex = 2;
@@ -61,10 +64,10 @@
             // 
             flowLayoutPanelFields.AutoScroll = true;
             flowLayoutPanelFields.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanelFields.Location = new Point(20, 112);
+            flowLayoutPanelFields.Location = new Point(20, 139);
             flowLayoutPanelFields.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanelFields.Name = "flowLayoutPanelFields";
-            flowLayoutPanelFields.Size = new Size(480, 251);
+            flowLayoutPanelFields.Size = new Size(480, 224);
             flowLayoutPanelFields.TabIndex = 3;
             // 
             // btnCalculate
@@ -102,11 +105,45 @@
             lblCommission.Size = new Size(125, 27);
             lblCommission.TabIndex = 7;
             // 
+            // lblClientStatus
+            // 
+            lblClientStatus.AutoSize = true;
+            lblClientStatus.Location = new Point(20, 61);
+            lblClientStatus.Name = "lblClientStatus";
+            lblClientStatus.Size = new Size(50, 20);
+            lblClientStatus.TabIndex = 8;
+            lblClientStatus.Text = "label1";
+            // 
+            // btnCreateContract
+            // 
+            btnCreateContract.Location = new Point(550, 223);
+            btnCreateContract.Margin = new Padding(3, 4, 3, 4);
+            btnCreateContract.Name = "btnCreateContract";
+            btnCreateContract.Size = new Size(180, 38);
+            btnCreateContract.TabIndex = 9;
+            btnCreateContract.Text = "Оформить договор";
+            btnCreateContract.UseVisualStyleBackColor = true;
+            btnCreateContract.Click += btnCreateContract_Click;
+            // 
+            // btnAddClient
+            // 
+            btnAddClient.Location = new Point(550, 325);
+            btnAddClient.Margin = new Padding(3, 4, 3, 4);
+            btnAddClient.Name = "btnAddClient";
+            btnAddClient.Size = new Size(180, 38);
+            btnAddClient.TabIndex = 10;
+            btnAddClient.Text = "Добавить клиента";
+            btnAddClient.UseVisualStyleBackColor = true;
+            btnAddClient.Click += btnAddClient_Click;
+            // 
             // CostCalculationForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(520, 500);
+            ClientSize = new Size(849, 500);
+            Controls.Add(btnAddClient);
+            Controls.Add(btnCreateContract);
+            Controls.Add(lblClientStatus);
             Controls.Add(lblCommission);
             Controls.Add(lblCost);
             Controls.Add(btnCancel);
@@ -136,5 +173,8 @@
         private System.Windows.Forms.Button btnCancel;
         private TextBox lblCost;
         private TextBox lblCommission;
+        private Label lblClientStatus;
+        private Button btnCreateContract;
+        private Button btnAddClient;
     }
 }

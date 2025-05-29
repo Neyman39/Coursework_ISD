@@ -14,11 +14,13 @@ namespace PROVERKA
     public partial class QueueForm : Form
     {
         private readonly IDBAgent _facade;
+        private Agent _agent;
 
-        public QueueForm(IDBAgent facade)
+        public QueueForm(Agent agent)
         {
             InitializeComponent();
-            _facade = facade;
+            _facade = new FacadeDB();
+            _agent = agent;
             LoadQueue();
         }
 
@@ -70,7 +72,7 @@ namespace PROVERKA
                 };
 
                 // ќткрываем форму расчета стоимости и передаем клиента
-                CostCalculationForm costCalculationForm = new CostCalculationForm(selectedClient);
+                CostCalculationForm costCalculationForm = new CostCalculationForm(selectedClient, _agent);
                 costCalculationForm.ShowDialog();
 
                 // ќбновл€ем очередь после закрыти€ формы расчета
@@ -104,7 +106,7 @@ namespace PROVERKA
                 };
 
                 // ќткрываем форму расчета стоимости и передаем клиента
-                CostCalculationForm costCalculationForm = new CostCalculationForm(selectedClient);
+                CostCalculationForm costCalculationForm = new CostCalculationForm(selectedClient, _agent);
                 costCalculationForm.ShowDialog();
 
                 // ќбновл€ем очередь после закрыти€ формы расчета

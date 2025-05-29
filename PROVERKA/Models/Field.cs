@@ -5,6 +5,7 @@ namespace PROVERKA.Models;
 
 public partial class Field
 {
+    //public int Id { get; set; }
     public int IdField { get; set; }
 
     public string? Type { get; set; }

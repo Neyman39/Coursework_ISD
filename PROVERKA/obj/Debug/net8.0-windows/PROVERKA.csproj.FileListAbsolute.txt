@@ -133,3 +133,5 @@ C:\Users\neyman\source\repos\PROVERKA\PROVERKA\bin\Debug\net8.0-windows\BCrypt.N
 C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.AddAgentForm.resources
 C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.AgentsForm.resources
 C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.CostCalculationForm.resources
+C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.AddClientForm.resources
+C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.ClientForm.resources

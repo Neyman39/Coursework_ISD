@@ -13,34 +13,6 @@ namespace PROVERKA
             //InitializeDefaultManager();
         }
 
-        //private void InitializeDefaultManager()
-        //{
-        //    using (var db = new INDbContext())
-        //    {
-        //        // Проверяем, есть ли уже менеджер в базе
-        //        bool managerExists = db.Users.Count(m => m.Login == "manager") > 2;
-
-        //        if (!managerExists)
-        //        {
-        //            // Создаем дефолтного менеджера
-        //            var defaultManager = new Models.User
-        //            {
-        //                Login = "manager",
-        //                Passwd = "manager123"
-        //            };
-
-        //            db.Users.Add(defaultManager);
-        //            db.SaveChanges();
-
-        //            MessageBox.Show("Создан учетная запись менеджера по умолчанию.\n" +
-        //                            "Логин: manager\nПароль: manager123",
-        //                            "Информация",
-        //                            MessageBoxButtons.OK,
-        //                            MessageBoxIcon.Information);
-        //        }
-        //    }
-        //}
-
         public void EnsureInitialUserCreated()
         {
             var db = new INDbContext();
@@ -65,7 +37,6 @@ namespace PROVERKA
             }
             catch (Exception ex)
             {
-                // Обработка ошибок (можно записать в лог)
                 Console.WriteLine($"Ошибка при создании начального пользователя: {ex.Message}");
             }
         }
@@ -91,8 +62,18 @@ namespace PROVERKA
                 var agent = db.Agents.FirstOrDefault(a => a.Login == username && a.Passwd == password);
                 if (agent != null)
                 {
-                    QueueForm agentForm = new QueueForm(new FacadeDB());
+                    QueueForm agentForm = new QueueForm(agent);
                     agentForm.Show();
+                    this.Hide();
+                    return;
+                }
+
+                // Проверка клиента
+                var client = db.Clients.FirstOrDefault(a => a.Login == username && a.Passwd == password);
+                if (client != null)
+                {
+                    ClientForm clientForm = new ClientForm(client.IdClient, this);
+                    clientForm.Show();
                     this.Hide();
                     return;
                 }

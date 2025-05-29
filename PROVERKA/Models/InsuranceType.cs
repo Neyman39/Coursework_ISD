@@ -11,5 +11,5 @@ public partial class InsuranceType
 
     public int? TariffRate { get; set; }
 
-    public virtual ICollection<Agreement> Agreements { get; set; } = new List<Agreement>();
+    //public virtual ICollection<Agreement> Agreements { get; set; } = new List<Agreement>();
 }

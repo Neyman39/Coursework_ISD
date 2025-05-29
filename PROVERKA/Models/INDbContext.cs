@@ -84,13 +84,13 @@ public partial class INDbContext : DbContext
 
             entity.ToTable("agreements");
 
-            entity.HasIndex(e => e.IdAgent, "Договорid_агента");
+            //entity.HasIndex(e => e.IdAgent, "Договорid_агента");
 
-            entity.HasIndex(e => e.IdClient, "Договорid_клиента");
+            //entity.HasIndex(e => e.IdClient, "Договорid_клиента");
 
-            entity.HasIndex(e => e.IdInsurance, "Договорid_страхования");
+            //entity.HasIndex(e => e.IdInsurance, "Договорid_страхования");
 
-            entity.HasIndex(e => e.IdBranch, "Договорid_филиала");
+            //entity.HasIndex(e => e.IdBranch, "Договорid_филиала");
 
             entity.Property(e => e.IdAgreement)
                 .HasColumnType("counter")
@@ -112,22 +112,26 @@ public partial class INDbContext : DbContext
                 .HasDefaultValue(0m)
                 .HasColumnType("currency")
                 .HasColumnName("sum_insured");
+            entity.Property(e => e.AgentPremium)
+                .HasDefaultValue(0m)
+                .HasColumnType("currency")
+                .HasColumnName("agent_premium");
 
-            entity.HasOne(d => d.IdAgentNavigation).WithMany(p => p.Agreements)
-                .HasForeignKey(d => d.IdAgent)
-                .HasConstraintName("АгентыДоговор");
+            //entity.HasOne(d => d.IdAgentNavigation).WithMany(p => p.Agreements)
+            //    .HasForeignKey(d => d.IdAgent)
+            //    .HasConstraintName("АгентыДоговор");
 
-            entity.HasOne(d => d.IdBranchNavigation).WithMany(p => p.Agreements)
-                .HasForeignKey(d => d.IdBranch)
-                .HasConstraintName("ФилиалДоговор");
+            //entity.HasOne(d => d.IdBranchNavigation).WithMany(p => p.Agreements)
+            //    .HasForeignKey(d => d.IdBranch)
+            //    .HasConstraintName("ФилиалДоговор");
 
-            entity.HasOne(d => d.IdClientNavigation).WithMany(p => p.Agreements)
-                .HasForeignKey(d => d.IdClient)
-                .HasConstraintName("КлиентыДоговор");
+            ////entity.HasOne(d => d.IdClientNavigation).WithMany(p => p.Agreements)
+            ////    .HasForeignKey(d => d.IdClient)
+            ////    .HasConstraintName("КлиентыДоговор");
 
-            entity.HasOne(d => d.IdInsuranceNavigation).WithMany(p => p.Agreements)
-                .HasForeignKey(d => d.IdInsurance)
-                .HasConstraintName("Виды_страхованияДоговор");
+            //entity.HasOne(d => d.IdInsuranceNavigation).WithMany(p => p.Agreements)
+            //    .HasForeignKey(d => d.IdInsurance)
+            //    .HasConstraintName("Виды_страхованияДоговор");
         });
 
         modelBuilder.Entity<Branch>(entity =>
@@ -154,12 +158,13 @@ public partial class INDbContext : DbContext
 
             entity.ToTable("clients");
 
-            entity.HasIndex(e => e.IdAgent, "Клиентыid_агента");
+            //entity.HasIndex(e => e.IdAgent, "Клиентыid_агента");
 
             entity.Property(e => e.IdClient)
                 .HasColumnType("counter")
                 .HasColumnName("id_client");
-            entity.Property(e => e.FullName).HasMaxLength(255);
+            entity.Property(e => e.FullName)
+                .HasMaxLength(255);
             entity.Property(e => e.IdAgent)
                 .HasDefaultValue(0)
                 .HasColumnName("id_agent");
@@ -169,7 +174,8 @@ public partial class INDbContext : DbContext
             entity.Property(e => e.Passwd)
                 .HasMaxLength(255)
                 .HasColumnName("passwd");
-            entity.Property(e => e.Phone).HasMaxLength(255);
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255);
 
             //entity.HasOne(d => d.IdAgentNavigation).WithMany(p => p.Clients)
             //    .HasForeignKey(d => d.IdAgent)

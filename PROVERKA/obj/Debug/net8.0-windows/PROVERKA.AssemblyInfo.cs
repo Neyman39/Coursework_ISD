@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PROVERKA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29dfed178b8427f74a3e49e8ddf88b335289c4b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c491f5be487795d0f5b8beccb39157e299f28b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("PROVERKA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PROVERKA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
