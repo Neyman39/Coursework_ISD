@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PROVERKA.Models;
 
-public partial class INDbContext : Microsoft.EntityFrameworkCore.DbContext
+public partial class INDbContext : DbContext
 {
     public INDbContext()
     {
@@ -15,98 +15,167 @@ public partial class INDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
     }
 
-    //public virtual DbSet<Agent> Agents { get; set; }
+    public virtual DbSet<Agent> Agents { get; set; }
 
-    //public virtual DbSet<Client> Clients { get; set; }
+    public virtual DbSet<Agreement> Agreements { get; set; }
+
+    public virtual DbSet<Branch> Branches { get; set; }
+
+    public virtual DbSet<Client> Clients { get; set; }
 
     public virtual DbSet<ClientQueue> ClientsQueues { get; set; }
 
-    //public virtual DbSet<InsuranceType> InsuranceTypes { get; set; }
+    public virtual DbSet<Field> Fields { get; set; }
 
-    //public virtual DbSet<Договор> Договорs { get; set; }
+    public virtual DbSet<InsuranceType> InsuranceTypes { get; set; }
 
-    //public virtual DbSet<ЗаказНаЗвонок> ЗаказНаЗвонокs { get; set; }
+    public virtual DbSet<InsuranceTypeField> InsuranceTypeFields { get; set; }
 
-    //public virtual DbSet<ПолеВидаСтрахования> ПолеВидаСтрахованияs { get; set; }
+    public virtual DbSet<OrderByCall> OrderByCalls { get; set; }
 
-    //public virtual DbSet<ПринятыеЗвонки> ПринятыеЗвонкиs { get; set; }
+    public virtual DbSet<ReceivedCall> ReceivedCalls { get; set; }
 
-    //public virtual DbSet<Филиал> Филиалs { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseJet("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=cursach_ISD1.mdb;");
-    }
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-    //        => optionsBuilder.UseJet("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=bin\\Debug\\net8.0-windows\\cursach_ISD1.mdb");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseJet("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=cursach_ISD1.mdb");
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //modelBuilder.Entity<Agent>(entity =>
-        //{
-        //    entity.HasKey(e => e.IdAgent).HasName("PrimaryKey");
+        modelBuilder.Entity<Agent>(entity =>
+        {
+            entity.HasKey(e => e.IdAgent).HasName("PrimaryKey");
 
-        //    entity.ToTable("agents");
+            entity.ToTable("agents");
 
-        //    entity.Property(e => e.IdAgent)
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_agent");
-        //    entity.Property(e => e.Adress)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("adress");
-        //    entity.Property(e => e.Experience)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("experience");
-        //    entity.Property(e => e.FullName).HasMaxLength(255);
-        //    entity.Property(e => e.IdBranch)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("id_branch");
-        //    entity.Property(e => e.Login)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("login");
-        //    entity.Property(e => e.Passwd)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("passwd");
-        //    entity.Property(e => e.Phone)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("phone");
-        //    entity.Property(e => e.Salary)
-        //        .HasDefaultValue(0m)
-        //        .HasColumnType("currency")
-        //        .HasColumnName("salary");
-        //});
+            entity.Property(e => e.IdAgent)
+                .HasColumnType("counter")
+                .HasColumnName("id_agent");
+            entity.Property(e => e.Adress)
+                .HasMaxLength(255)
+                .HasColumnName("adress");
+            entity.Property(e => e.Experience)
+                .HasDefaultValue(0)
+                .HasColumnName("experience");
+            entity.Property(e => e.FullName).HasMaxLength(255);
+            entity.Property(e => e.IdBranch)
+                .HasDefaultValue(0)
+                .HasColumnName("id_branch");
+            entity.Property(e => e.Login)
+                .HasMaxLength(255)
+                .HasColumnName("login");
+            entity.Property(e => e.Passwd)
+                .HasMaxLength(255)
+                .HasColumnName("passwd");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255)
+                .HasColumnName("phone");
+            entity.Property(e => e.Salary)
+                .HasDefaultValue(0m)
+                .HasColumnType("currency")
+                .HasColumnName("salary");
+        });
 
-        //modelBuilder.Entity<Client>(entity =>
-        //{
-        //    entity.HasKey(e => e.IdClient).HasName("PrimaryKey");
+        modelBuilder.Entity<Agreement>(entity =>
+        {
+            entity.HasKey(e => e.IdAgreement).HasName("PrimaryKey");
 
-        //    entity.ToTable("clients");
+            entity.ToTable("agreements");
 
-        //    entity.HasIndex(e => e.IdAgent, "Клиентыid_агента");
+            entity.HasIndex(e => e.IdAgent, "Договорid_агента");
 
-        //    entity.Property(e => e.IdClient)
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_клиента");
-        //    entity.Property(e => e.IdAgent)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("id_агента");
-        //    entity.Property(e => e.Login)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("логин");
-        //    entity.Property(e => e.Passwd)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("пароль");
-        //    entity.Property(e => e.Phone).HasMaxLength(255);
-        //    entity.Property(e => e.FullName)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("ФИО");
+            entity.HasIndex(e => e.IdClient, "Договорid_клиента");
 
-        //    entity.HasOne(d => d.IdАгентаNavigation).WithMany(p => p.Clients)
-        //        .HasForeignKey(d => d.IdAgent)
-        //        .OnDelete(DeleteBehavior.Cascade)
-        //        .HasConstraintName("АгентыКлиенты");
-        //});
+            entity.HasIndex(e => e.IdInsurance, "Договорid_страхования");
+
+            entity.HasIndex(e => e.IdBranch, "Договорid_филиала");
+
+            entity.Property(e => e.IdAgreement)
+                .HasColumnType("counter")
+                .HasColumnName("id_agreement");
+            entity.Property(e => e.IdAgent)
+                .HasDefaultValue(0)
+                .HasColumnName("id_agent");
+            entity.Property(e => e.IdBranch)
+                .HasDefaultValue(0)
+                .HasColumnName("id_branch");
+            entity.Property(e => e.IdClient)
+                .HasDefaultValue(0)
+                .HasColumnName("id_client");
+            entity.Property(e => e.IdInsurance)
+                .HasDefaultValue(0)
+                .HasColumnName("id_insurance");
+            entity.Property(e => e.RegDate).HasMaxLength(255);
+            entity.Property(e => e.SumInsured)
+                .HasDefaultValue(0m)
+                .HasColumnType("currency")
+                .HasColumnName("sum_insured");
+
+            entity.HasOne(d => d.IdAgentNavigation).WithMany(p => p.Agreements)
+                .HasForeignKey(d => d.IdAgent)
+                .HasConstraintName("АгентыДоговор");
+
+            entity.HasOne(d => d.IdBranchNavigation).WithMany(p => p.Agreements)
+                .HasForeignKey(d => d.IdBranch)
+                .HasConstraintName("ФилиалДоговор");
+
+            entity.HasOne(d => d.IdClientNavigation).WithMany(p => p.Agreements)
+                .HasForeignKey(d => d.IdClient)
+                .HasConstraintName("КлиентыДоговор");
+
+            entity.HasOne(d => d.IdInsuranceNavigation).WithMany(p => p.Agreements)
+                .HasForeignKey(d => d.IdInsurance)
+                .HasConstraintName("Виды_страхованияДоговор");
+        });
+
+        modelBuilder.Entity<Branch>(entity =>
+        {
+            entity.HasKey(e => e.IdBranch).HasName("PrimaryKey");
+
+            entity.ToTable("branch");
+
+            entity.Property(e => e.IdBranch)
+                .HasColumnType("counter")
+                .HasColumnName("id_branch");
+            entity.Property(e => e.Adress).HasMaxLength(255);
+            entity.Property(e => e.Nomination)
+                .HasMaxLength(255)
+                .HasColumnName("nomination");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255)
+                .HasColumnName("phone");
+        });
+
+        modelBuilder.Entity<Client>(entity =>
+        {
+            entity.HasKey(e => e.IdClient).HasName("PrimaryKey");
+
+            entity.ToTable("clients");
+
+            entity.HasIndex(e => e.IdAgent, "Клиентыid_агента");
+
+            entity.Property(e => e.IdClient)
+                .HasColumnType("counter")
+                .HasColumnName("id_client");
+            entity.Property(e => e.FullName).HasMaxLength(255);
+            entity.Property(e => e.IdAgent)
+                .HasDefaultValue(0)
+                .HasColumnName("id_agent");
+            entity.Property(e => e.Login)
+                .HasMaxLength(255)
+                .HasColumnName("login");
+            entity.Property(e => e.Passwd)
+                .HasMaxLength(255)
+                .HasColumnName("passwd");
+            entity.Property(e => e.Phone).HasMaxLength(255);
+
+            //entity.HasOne(d => d.IdAgentNavigation).WithMany(p => p.Clients)
+            //    .HasForeignKey(d => d.IdAgent)
+            //    .OnDelete(DeleteBehavior.Cascade)
+            //    .HasConstraintName("АгентыКлиенты");
+        });
 
         modelBuilder.Entity<ClientQueue>(entity =>
         {
@@ -117,7 +186,6 @@ public partial class INDbContext : Microsoft.EntityFrameworkCore.DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("counter")
                 .HasColumnName("id");
-            entity.Property(e => e.RegDate).HasColumnName("RegDate");
             entity.Property(e => e.FullName).HasMaxLength(255);
             entity.Property(e => e.IdAgent)
                 .HasDefaultValue(0)
@@ -129,176 +197,113 @@ public partial class INDbContext : Microsoft.EntityFrameworkCore.DbContext
             //    .HasConstraintName("agentsClientsQueue");
         });
 
-        //modelBuilder.Entity<InsuranceType>(entity =>
-        //{
-        //    entity.HasKey(e => e.IdInsurance).HasName("PrimaryKey");
+        modelBuilder.Entity<Field>(entity =>
+        {
+            entity.HasKey(e => e.IdField).HasName("PrimaryKey");
 
-        //    entity.ToTable("insurance_types");
+            entity.ToTable("field");
 
-        //    entity.Property(e => e.IdInsurance)
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_insurance");
-        //    entity.Property(e => e.Name)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("name");
-        //    entity.Property(e => e.TariffRate)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("tariff_rate");
-        //});
+            entity.Property(e => e.IdField)
+                .HasColumnType("counter")
+                .HasColumnName("id_field");
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .HasColumnName("name");
+            entity.Property(e => e.Type)
+                .HasMaxLength(255)
+                .HasColumnName("type");
+        });
 
-        //modelBuilder.Entity<Договор>(entity =>
-        //{
-        //    entity.HasKey(e => e.IdДоговора).HasName("PrimaryKey");
+        modelBuilder.Entity<InsuranceType>(entity =>
+        {
+            entity.HasKey(e => e.IdInsurance).HasName("PrimaryKey");
 
-        //    entity.ToTable("Договор");
+            entity.ToTable("insurance_types");
 
-        //    entity.HasIndex(e => e.IdАгента, "Договорid_агента");
+            entity.Property(e => e.IdInsurance)
+                .HasColumnType("counter")
+                .HasColumnName("id_insurance");
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .HasColumnName("name");
+            entity.Property(e => e.TariffRate)
+                .HasDefaultValue(0)
+                .HasColumnName("tariff_rate");
+        });
 
-        //    entity.HasIndex(e => e.IdКлиента, "Договорid_клиента");
+        modelBuilder.Entity<InsuranceTypeField>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("insurance_type_field");
 
-        //    entity.HasIndex(e => e.IdСтрахования, "Договорid_страхования");
+            entity.Property(e => e.IdField)
+                .ValueGeneratedOnAdd()
+                .HasColumnType("counter")
+                .HasColumnName("id_field");
+            entity.Property(e => e.IdInsurance)
+                .HasDefaultValue(0)
+                .HasColumnName("id_insurance");
 
-        //    entity.HasIndex(e => e.IdФилиала, "Договорid_филиала");
+            entity.HasOne(d => d.IdFieldNavigation).WithMany()
+                .HasForeignKey(d => d.IdField)
+                .HasConstraintName("ПолеПоле_вида_страхования");
 
-        //    entity.Property(e => e.IdДоговора)
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_договора");
-        //    entity.Property(e => e.IdАгента)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("id_агента");
-        //    entity.Property(e => e.IdКлиента)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("id_клиента");
-        //    entity.Property(e => e.IdСтрахования)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("id_страхования");
-        //    entity.Property(e => e.IdФилиала)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("id_филиала");
-        //    entity.Property(e => e.Дата)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("дата");
-        //    entity.Property(e => e.СтраховаяСумма)
-        //        .HasDefaultValue(0m)
-        //        .HasColumnType("currency")
-        //        .HasColumnName("страховая_сумма");
+            entity.HasOne(d => d.IdInsuranceNavigation).WithMany()
+                .HasForeignKey(d => d.IdInsurance)
+                .HasConstraintName("Виды_страхованияПоле_вида_страхования");
+        });
 
-        //    entity.HasOne(d => d.IdАгентаNavigation).WithMany(p => p.Договорs)
-        //        .HasForeignKey(d => d.IdАгента)
-        //        .HasConstraintName("АгентыДоговор");
+        modelBuilder.Entity<OrderByCall>(entity =>
+        {
+            entity.HasKey(e => e.IdCall).HasName("PrimaryKey");
 
-        //    entity.HasOne(d => d.IdКлиентаNavigation).WithMany(p => p.Договорs)
-        //        .HasForeignKey(d => d.IdКлиента)
-        //        .HasConstraintName("КлиентыДоговор");
+            entity.ToTable("order_by_call");
 
-        //    entity.HasOne(d => d.IdСтрахованияNavigation).WithMany(p => p.Договорs)
-        //        .HasForeignKey(d => d.IdСтрахования)
-        //        .HasConstraintName("Виды_страхованияДоговор");
+            entity.Property(e => e.IdCall)
+                .HasColumnType("counter")
+                .HasColumnName("id_call");
+            entity.Property(e => e.FullName).HasMaxLength(255);
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255)
+                .HasColumnName("phone");
+        });
 
-        //    entity.HasOne(d => d.IdФилиалаNavigation).WithMany(p => p.Договорs)
-        //        .HasForeignKey(d => d.IdФилиала)
-        //        .HasConstraintName("ФилиалДоговор");
-        //});
+        modelBuilder.Entity<ReceivedCall>(entity =>
+        {
+            entity.HasKey(e => e.IdCall).HasName("PrimaryKey");
 
-        //modelBuilder.Entity<ЗаказНаЗвонок>(entity =>
-        //{
-        //    entity.HasKey(e => e.IdЗвонка).HasName("PrimaryKey");
+            entity.ToTable("received_calls");
 
-        //    entity.ToTable("Заказ_на_звонок");
+            entity.Property(e => e.IdCall)
+                .ValueGeneratedOnAdd()
+                .HasColumnType("counter")
+                .HasColumnName("id_call");
+            entity.Property(e => e.IdAgent)
+                .HasDefaultValue(0)
+                .HasColumnName("id_agent");
+            entity.Property(e => e.RegTime).HasColumnName("Reg_Time");
 
-        //    entity.Property(e => e.IdЗвонка)
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_звонка");
-        //    entity.Property(e => e.Дата).HasColumnName("дата");
-        //    entity.Property(e => e.Телефон)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("телефон");
-        //    entity.Property(e => e.Фио)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("ФИО");
-        //});
+            entity.HasOne(d => d.IdCallNavigation).WithOne(p => p.ReceivedCall)
+                .HasForeignKey<ReceivedCall>(d => d.IdCall)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Заказ_на_звонокПринятые_звонки");
+        });
 
-        //modelBuilder.Entity<Поле>(entity =>
-        //{
-        //    entity.HasKey(e => e.IdПоле).HasName("PrimaryKey");
+        modelBuilder.Entity<User>(entity =>
+        {
+            //entity.HasKey(e => e.Id).HasName("PrimaryKey");
 
-        //    entity.ToTable("Поле");
+            entity.ToTable("users");
 
-        //    entity.Property(e => e.IdПоле)
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_поле");
-        //    entity.Property(e => e.Название)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("название");
-        //    entity.Property(e => e.Тип)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("тип");
-        //});
-
-        //modelBuilder.Entity<ПолеВидаСтрахования>(entity =>
-        //{
-        //    entity
-        //        .HasNoKey()
-        //        .ToTable("Поле_вида_страхования");
-
-        //    entity.Property(e => e.IdПоле)
-        //        .ValueGeneratedOnAdd()
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_поле");
-        //    entity.Property(e => e.IdСтрахование)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("id_страхование");
-
-        //    entity.HasOne(d => d.IdПолеNavigation).WithMany()
-        //        .HasForeignKey(d => d.IdПоле)
-        //        .HasConstraintName("ПолеПоле_вида_страхования");
-
-        //    entity.HasOne(d => d.IdСтрахованиеNavigation).WithMany()
-        //        .HasForeignKey(d => d.IdСтрахование)
-        //        .HasConstraintName("Виды_страхованияПоле_вида_страхования");
-        //});
-
-        //modelBuilder.Entity<ПринятыеЗвонки>(entity =>
-        //{
-        //    entity.HasKey(e => e.IdЗвонка).HasName("PrimaryKey");
-
-        //    entity.ToTable("Принятые_звонки");
-
-        //    entity.Property(e => e.IdЗвонка)
-        //        .ValueGeneratedOnAdd()
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_звонка");
-        //    entity.Property(e => e.IdАгента)
-        //        .HasDefaultValue(0)
-        //        .HasColumnName("id_агента");
-        //    entity.Property(e => e.Время).HasColumnName("время");
-        //    entity.Property(e => e.Дата).HasColumnName("дата");
-
-        //    entity.HasOne(d => d.IdЗвонкаNavigation).WithOne(p => p.ПринятыеЗвонки)
-        //        .HasForeignKey<ПринятыеЗвонки>(d => d.IdЗвонка)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("Заказ_на_звонокПринятые_звонки");
-        //});
-
-        //modelBuilder.Entity<Филиал>(entity =>
-        //{
-        //    entity.HasKey(e => e.IdФилиала).HasName("PrimaryKey");
-
-        //    entity.ToTable("Филиал");
-
-        //    entity.Property(e => e.IdФилиала)
-        //        .HasColumnType("counter")
-        //        .HasColumnName("id_филиала");
-        //    entity.Property(e => e.Адрес)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("адрес");
-        //    entity.Property(e => e.Наименование)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("наименование");
-        //    entity.Property(e => e.Телефон)
-        //        .HasMaxLength(255)
-        //        .HasColumnName("телефон");
-        //});
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Login)
+                .HasMaxLength(255)
+                .HasColumnName("login");
+            entity.Property(e => e.Passwd)
+                .HasMaxLength(255)
+                .HasColumnName("passwd");
+        });
 
         OnModelCreatingPartial(modelBuilder);
     }

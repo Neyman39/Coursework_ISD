@@ -127,3 +127,9 @@ C:\Users\neyman\source\repos\PROVERKA\PROVERKA\bin\Debug\net8.0-windows\tr\Micro
 C:\Users\neyman\source\repos\PROVERKA\PROVERKA\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\neyman\source\repos\PROVERKA\PROVERKA\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\neyman\source\repos\PROVERKA\PROVERKA\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.sourcelink.json
+C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.LoginForm.resources
+C:\Users\neyman\source\repos\PROVERKA\PROVERKA\bin\Debug\net8.0-windows\BCrypt.Net-Next.dll
+C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.AddAgentForm.resources
+C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.AgentsForm.resources
+C:\Users\neyman\source\repos\PROVERKA\PROVERKA\obj\Debug\net8.0-windows\PROVERKA.CostCalculationForm.resources

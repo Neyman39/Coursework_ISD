@@ -1,3 +1,4 @@
+using PROVERKA.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,12 +13,12 @@ namespace PROVERKA
 {
     public partial class QueueForm : Form
     {
-        private readonly FacadeDB _facade;
+        private readonly IDBAgent _facade;
 
-        public QueueForm()
+        public QueueForm(IDBAgent facade)
         {
             InitializeComponent();
-            _facade = new FacadeDB();
+            _facade = facade;
             LoadQueue();
         }
 
@@ -26,11 +27,55 @@ namespace PROVERKA
             var queue = _facade.LoadingClientsQueue();
             dataGridViewQueue.DataSource = queue;
 
-            // Настройка отображения DataGridView
+
             dataGridViewQueue.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //dataGridViewQueue.Columns["id"].Visible = false;
             //dataGridViewQueue.Columns["id_agent"].Visible = false;
             //dataGridViewQueue.Columns["Agent"].Visible = false;
+            AddButtonColumn();
+        }
+
+        private void AddButtonColumn()
+        {
+            // Проверяем, нет ли уже столбца с кнопками
+            if (dataGridViewQueue.Columns.Contains("SelectButtonColumn"))
+                return;
+
+            var buttonColumn = new DataGridViewButtonColumn
+            {
+                Name = "SelectButtonColumn",
+                HeaderText = "Действие",
+                Text = "Выбрать",
+                UseColumnTextForButtonValue = true,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
+
+            dataGridViewQueue.Columns.Add(buttonColumn);
+        }
+
+        private void DataGridViewQueue_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Проверяем, что нажали на кнопку (а не на заголовок или другие ячейки)
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewQueue.Columns["SelectButtonColumn"].Index)
+            {
+                // Получаем выделенную строку
+                DataGridViewRow selectedRow = dataGridViewQueue.Rows[e.RowIndex];
+
+                // Создаем объект клиента из данных строки
+                Client selectedClient = new Client
+                {
+                    IdClient = Convert.ToInt32(selectedRow.Cells["IdClient"].Value),
+                    FullName = selectedRow.Cells["FullName"].Value.ToString(),
+                    Phone = selectedRow.Cells["Phone"].Value.ToString()
+                };
+
+                // Открываем форму расчета стоимости и передаем клиента
+                CostCalculationForm costCalculationForm = new CostCalculationForm(selectedClient);
+                costCalculationForm.ShowDialog();
+
+                // Обновляем очередь после закрытия формы расчета
+                LoadQueue();
+            }
         }
 
         private void btnAddToQueue_Click(object sender, EventArgs e)
@@ -38,8 +83,33 @@ namespace PROVERKA
             var addForm = new AddToQueueForm();
             addForm.ShowDialog();
 
-            // Обновляем очередь после закрытия формы добавления
+
             LoadQueue();
+        }
+
+        private void dataGridViewQueue_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Проверяем, что нажали на кнопку (а не на заголовок или другие ячейки)
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewQueue.Columns["SelectButtonColumn"].Index)
+            {
+                // Получаем выделенную строку
+                DataGridViewRow selectedRow = dataGridViewQueue.Rows[e.RowIndex];
+
+                // Создаем объект клиента из данных строки
+                Client selectedClient = new Client
+                {
+                    IdClient = Convert.ToInt32(selectedRow.Cells["Id"].Value),
+                    FullName = selectedRow.Cells["FullName"].Value.ToString(),
+                    Phone = selectedRow.Cells["Phone"].Value.ToString()
+                };
+
+                // Открываем форму расчета стоимости и передаем клиента
+                CostCalculationForm costCalculationForm = new CostCalculationForm(selectedClient);
+                costCalculationForm.ShowDialog();
+
+                // Обновляем очередь после закрытия формы расчета
+                LoadQueue();
+            }
         }
     }
 }

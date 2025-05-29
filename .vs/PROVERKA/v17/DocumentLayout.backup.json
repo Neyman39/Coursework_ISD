@@ -1,0 +1,284 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\facadedb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\facadedb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\models\\field.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\models\\field.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\costcalculationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\costcalculationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\costcalculationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\costcalculationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\idbagent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\idbagent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\queueform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\queueform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\costcalculationform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\costcalculationform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|C:\\Users\\neyman\\source\\repos\\PROVERKA\\proverka\\queueform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\queueform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\models\\indbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\models\\indbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\addagentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\addagentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\proverka.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\proverka.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\proverka.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\proverka.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\insurancedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6770A423-9659-48DA-BBD7-08D80874179A}|PROVERKA\\PROVERKA.csproj|solutionrelative:proverka\\insurancedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\users\\neyman\\source\\repos\\proverka\\proverka\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:proverka\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Field.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\Models\\Field.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\Models\\Field.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\Models\\Field.cs",
+              "RelativeToolTip": "PROVERKA\\Models\\Field.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T13:26:54.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FacadeDB.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\FacadeDB.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\FacadeDB.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\FacadeDB.cs",
+              "RelativeToolTip": "PROVERKA\\FacadeDB.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAqwF0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T10:03:46.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "QueueForm.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\QueueForm.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\QueueForm.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\QueueForm.cs",
+              "RelativeToolTip": "PROVERKA\\QueueForm.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAwwGQAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T10:03:35.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CostCalculationForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\CostCalculationForm.Designer.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\CostCalculationForm.Designer.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\CostCalculationForm.Designer.cs",
+              "RelativeToolTip": "PROVERKA\\CostCalculationForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:15:02.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\Program.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\Program.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\Program.cs",
+              "RelativeToolTip": "PROVERKA\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T10:06:49.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CostCalculationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\CostCalculationForm.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\CostCalculationForm.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\CostCalculationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "PROVERKA\\CostCalculationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:14:08.28Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CostCalculationForm.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\CostCalculationForm.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\CostCalculationForm.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\CostCalculationForm.cs",
+              "RelativeToolTip": "PROVERKA\\CostCalculationForm.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAmwGIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:16:20.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IDBAgent.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\IDBAgent.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\IDBAgent.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\IDBAgent.cs",
+              "RelativeToolTip": "PROVERKA\\IDBAgent.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA3wBAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T10:17:30.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "INDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\Models\\INDbContext.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\Models\\INDbContext.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\Models\\INDbContext.cs",
+              "RelativeToolTip": "PROVERKA\\Models\\INDbContext.cs",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAuwO8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T06:40:46.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\LoginForm.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\LoginForm.cs",
+              "RelativeToolTip": "PROVERKA\\LoginForm.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:47:14.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "QueueForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\QueueForm.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\QueueForm.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\QueueForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "PROVERKA\\QueueForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T10:03:19.745Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AddAgentForm.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\AddAgentForm.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\AddAgentForm.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\AddAgentForm.cs",
+              "RelativeToolTip": "PROVERKA\\AddAgentForm.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T10:20:43.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PROVERKA.csproj",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\PROVERKA.csproj",
+              "RelativeDocumentMoniker": "PROVERKA\\PROVERKA.csproj",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\PROVERKA.csproj",
+              "RelativeToolTip": "PROVERKA\\PROVERKA.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-17T09:06:23.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PROVERKA",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\PROVERKA.csproj",
+              "RelativeDocumentMoniker": "PROVERKA\\PROVERKA.csproj",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\PROVERKA.csproj",
+              "RelativeToolTip": "PROVERKA\\PROVERKA.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-17T09:06:38.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "InsuranceDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\InsuranceDbContext.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\InsuranceDbContext.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\InsuranceDbContext.cs",
+              "RelativeToolTip": "PROVERKA\\InsuranceDbContext.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABwAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T12:36:31.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\Form1.cs",
+              "RelativeDocumentMoniker": "PROVERKA\\Form1.cs",
+              "ToolTip": "C:\\Users\\neyman\\source\\repos\\PROVERKA\\PROVERKA\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "PROVERKA\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T12:34:05.182Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

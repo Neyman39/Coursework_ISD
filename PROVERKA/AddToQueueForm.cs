@@ -12,7 +12,7 @@ namespace PROVERKA
 {
     public partial class AddToQueueForm : Form
     {
-        private readonly FacadeDB _facade;
+        private readonly IDBAgent _facade;
 
         public AddToQueueForm()
         {

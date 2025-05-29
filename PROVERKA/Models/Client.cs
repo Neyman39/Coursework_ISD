@@ -17,7 +17,7 @@ public partial class Client
 
     public string? Passwd { get; set; }
 
-    public virtual Agent? IdАгентаNavigation { get; set; }
+    public virtual ICollection<Agreement> Agreements { get; set; } = new List<Agreement>();
 
-    public virtual ICollection<Договор> Договорs { get; set; } = new List<Договор>();
+    public virtual Agent? IdAgentNavigation { get; set; }
 }
