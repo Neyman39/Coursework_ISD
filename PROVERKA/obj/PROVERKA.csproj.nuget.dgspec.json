@@ -58,6 +58,14 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[3.9.1, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[3.9.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.5, )"
@@ -67,6 +75,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.5, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
             },
             "System.Data.OleDb": {
               "target": "Package",

@@ -13,13 +13,35 @@ namespace PROVERKA
     public class FacadeDB : IDBAgent
     {
 
-        private readonly INDbContext _context;
+        //private readonly INDbContext _context;
 
+        //public FacadeDB()
+        //{
+        //    _context = new INDbContext();
+        //}
+
+        // Делегат для создания контекста
+        private static Func<INDbContext> _dbContextFunc = () => new INDbContext();
+        private readonly INDbContext _context;
 
         public FacadeDB()
         {
-            _context = new INDbContext();
+            _context = _dbContextFunc(); // Используем функцию для создания контекста
         }
+
+        // Метод для подмены создания контекста (для тестов)
+        public static void SetDbContextFunc(Func<INDbContext> dbContextFunc)
+        {
+            _dbContextFunc = dbContextFunc ?? throw new ArgumentNullException(nameof(dbContextFunc));
+        }
+
+        // Метод для сброса к дефолтной реализации (для очистки после тестов)
+        public static void ResetDbContextFunc()
+        {
+            _dbContextFunc = () => new INDbContext();
+        }
+
+        private INDbContext Db => _dbContextFunc();
 
         // Реализация методов IDBAgent
         public bool ClientCheck(string phone)
