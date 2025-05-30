@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace PROVERKA
 {
-    public class FacadeDB : IDBAgent
+    public class FacadeDB : IDBAgent, IDBClient, IDBManager
     {
 
         //private readonly INDbContext _context;
@@ -26,7 +26,7 @@ namespace PROVERKA
 
         public FacadeDB()
         {
-            _context = _dbContextFunc(); // Используем функцию для создания контекста
+            _context = _dbContextFunc();
         }
 
         // Метод для подмены создания контекста (для тестов)
@@ -35,13 +35,10 @@ namespace PROVERKA
             _dbContextFunc = dbContextFunc ?? throw new ArgumentNullException(nameof(dbContextFunc));
         }
 
-        // Метод для сброса к дефолтной реализации (для очистки после тестов)
         public static void ResetDbContextFunc()
         {
             _dbContextFunc = () => new INDbContext();
         }
-
-        private INDbContext Db => _dbContextFunc();
 
         // Реализация методов IDBAgent
         public bool ClientCheck(string phone)
@@ -53,7 +50,8 @@ namespace PROVERKA
         {
             return _context.Clients
                 .AsNoTracking()
-                .FirstOrDefault(c => c.Phone == phone);
+                .FirstOrDefault(c => c.Phone == phone)
+            ?? throw new Exception($"Клиент с телефоном {phone} не найден");
         }
 
         public decimal CalculateInsuranceCost(int insuranceTypeId, Dictionary<int, string> fieldValues)
@@ -67,7 +65,6 @@ namespace PROVERKA
             decimal baseCost = 0;
             decimal finalCost = 0;
 
-            // Расчет в зависимости от типа страхования
             switch (insuranceType.Name.ToLower())
             {
                 case "каско":
@@ -102,7 +99,6 @@ namespace PROVERKA
         {
             decimal cost = baseCost;
             
-            // Стаж вождения
             if (fieldValues.TryGetValue(GetFieldId("Стаж вождения"), out string expValue) &&
                 int.TryParse(expValue, out int experience))
             {
@@ -111,7 +107,6 @@ namespace PROVERKA
                 else cost *= 1.1m;
             }
 
-            // Мощность двигателя
             if (fieldValues.TryGetValue(GetFieldId("Мощность двигателя"), out string powerValue) &&
                 int.TryParse(powerValue, out int power))
             {
@@ -129,7 +124,6 @@ namespace PROVERKA
         {
             decimal cost = baseCost;
 
-            // Возраст
             if (fieldValues.TryGetValue(GetFieldId("Возраст"), out string ageValue) &&
                 int.TryParse(ageValue, out int age))
             {
@@ -138,7 +132,6 @@ namespace PROVERKA
                 else if (age > 30) cost *= 1.1m;
             }
 
-            // Степень опасности
             if (fieldValues.TryGetValue(GetFieldId("Степень опасности производства"), out string dangerValue))
             {
                 if (int.TryParse(dangerValue, out int dangerLevel))
@@ -158,7 +151,6 @@ namespace PROVERKA
         {
             decimal cost = baseCost;
 
-            // Площадь
             if (fieldValues.TryGetValue(GetFieldId("Площадь"), out string areaValue) &&
                 int.TryParse(areaValue, out int area))
             {
@@ -167,7 +159,10 @@ namespace PROVERKA
                 else if (area > 50) cost *= 1.1m;
             }
 
-            return cost;
+            if (cost != baseCost)
+                return cost;
+            else
+                return 0.0m;
         }
 
         public bool AgreementCheck(string document)
@@ -186,8 +181,8 @@ namespace PROVERKA
                     SumInsured = sumInsured,
                     IdAgent = idAgent,
                     IdClient = idClient,
-                    IdBranch = branchId, // тут вставляешь актуальный IdBranch, либо передай через параметр.
-                    IdInsurance = insuranceId, // По умолчанию или передавай как параметр
+                    IdBranch = branchId,
+                    IdInsurance = insuranceId,
                     AgentPremium = agentPremium
                 };
 
@@ -217,33 +212,10 @@ namespace PROVERKA
             }
         }
 
-        //public bool SaveAgreement(string document)
-        //{
-        //    try
-        //    {
-        //        // Логика сохранения договора
-        //        var agreement = new ClientQueue
-        //        {
-        //            //DocumentNumber = document,
-        //            RegDate = DateTime.Now
-        //            // Другие поля
-        //        };
-
-        //        //_context.Agreements.Add(agreement);
-        //        _context.SaveChanges();
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
-
         public bool CreateClientAccount(string input)
         {
             try
             {
-                // Парсинг входных данных
                 var data = input.Split('|');
 
                 var client = new Client
@@ -252,7 +224,7 @@ namespace PROVERKA
                     Phone = data[1],
                     IdAgent = int.Parse(data[2]),
                     Login = data[3],
-                    Passwd = data[4] // В реальном приложении нужно хэшировать пароль
+                    Passwd = data[4]
                 };
 
                 _context.Clients.Add(client);
@@ -264,7 +236,6 @@ namespace PROVERKA
                 MessageBox.Show($"Ошибка: {ex.Message}\n{ex.InnerException?.Message}");
                 return false;
             }
-            //return false;
         }
 
         public ClientAgreementInfo GetClientAgreementInfo(int? clientId)
@@ -308,15 +279,6 @@ namespace PROVERKA
             .AsNoTracking()
             .ToList();
         }
-
-        //public List<InsuranceTypeField> LoadingInsuranceFields(int? insuranceTypeId)
-        //{
-        //    return _context.InsuranceTypeFields
-        //        .Where(itf => itf.IdInsurance == insuranceTypeId)
-        //        .Include(itf => itf.IdField) // Подгружаем связанную сущность Field
-        //        .AsNoTracking()
-        //        .ToList();
-        //}
 
         public List<Field> LoadingInsuranceFields(int insuranceTypeId)
         {
@@ -396,6 +358,22 @@ namespace PROVERKA
             }
             catch (Exception)
             {
+                return false;
+            }
+        }
+
+        public bool RemoveAgent(int? agentId)
+        {
+            var workingAgent = _context.Agents.FirstOrDefault(cq => cq.IdAgent == agentId);
+            if (workingAgent != null)
+            {
+                _context.Agents.Remove(workingAgent);
+                _context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Клиент не найден в очереди.");
                 return false;
             }
         }

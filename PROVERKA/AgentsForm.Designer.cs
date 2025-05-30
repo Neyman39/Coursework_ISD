@@ -17,46 +17,67 @@
 
         private void InitializeComponent()
         {
-            this.dataGridViewAgents = new System.Windows.Forms.DataGridView();
-            this.btnAddAgent = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAgents)).BeginInit();
-            this.SuspendLayout();
-
+            dataGridViewAgents = new DataGridView();
+            btnAddAgent = new Button();
+            btnDelAgent = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAgents).BeginInit();
+            SuspendLayout();
+            // 
             // dataGridViewAgents
-            this.dataGridViewAgents.AllowUserToAddRows = false;
-            this.dataGridViewAgents.AllowUserToDeleteRows = false;
-            this.dataGridViewAgents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAgents.Location = new System.Drawing.Point(12, 12);
-            this.dataGridViewAgents.Name = "dataGridViewAgents";
-            this.dataGridViewAgents.ReadOnly = true;
-            this.dataGridViewAgents.Size = new System.Drawing.Size(760, 400);
-            this.dataGridViewAgents.TabIndex = 0;
-
+            // 
+            dataGridViewAgents.AllowUserToAddRows = false;
+            dataGridViewAgents.AllowUserToDeleteRows = false;
+            dataGridViewAgents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAgents.Location = new Point(16, 18);
+            dataGridViewAgents.Margin = new Padding(4, 5, 4, 5);
+            dataGridViewAgents.Name = "dataGridViewAgents";
+            dataGridViewAgents.ReadOnly = true;
+            dataGridViewAgents.RowHeadersWidth = 51;
+            dataGridViewAgents.Size = new Size(1013, 615);
+            dataGridViewAgents.TabIndex = 0;
+            // 
             // btnAddAgent
-            this.btnAddAgent.Location = new System.Drawing.Point(12, 418);
-            this.btnAddAgent.Name = "btnAddAgent";
-            this.btnAddAgent.Size = new System.Drawing.Size(120, 30);
-            this.btnAddAgent.TabIndex = 1;
-            this.btnAddAgent.Text = "Добавить агента";
-            this.btnAddAgent.UseVisualStyleBackColor = true;
-            this.btnAddAgent.Click += new System.EventHandler(this.btnAddAgent_Click);
-
+            // 
+            btnAddAgent.Location = new Point(16, 643);
+            btnAddAgent.Margin = new Padding(4, 5, 4, 5);
+            btnAddAgent.Name = "btnAddAgent";
+            btnAddAgent.Size = new Size(160, 46);
+            btnAddAgent.TabIndex = 1;
+            btnAddAgent.Text = "Добавить агента";
+            btnAddAgent.UseVisualStyleBackColor = true;
+            btnAddAgent.Click += btnAddAgent_Click;
+            // 
+            // btnDelAgent
+            // 
+            btnDelAgent.Location = new Point(207, 643);
+            btnDelAgent.Margin = new Padding(4, 5, 4, 5);
+            btnDelAgent.Name = "btnDelAgent";
+            btnDelAgent.Size = new Size(160, 46);
+            btnDelAgent.TabIndex = 2;
+            btnDelAgent.Text = "Уволить агента";
+            btnDelAgent.UseVisualStyleBackColor = true;
+            btnDelAgent.Click += btnDelAgent_Click;
+            // 
             // AgentsForm
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 460);
-            this.Controls.Add(this.btnAddAgent);
-            this.Controls.Add(this.dataGridViewAgents);
-            this.Name = "AgentsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Управление агентами";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAgents)).EndInit();
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1045, 708);
+            Controls.Add(btnDelAgent);
+            Controls.Add(btnAddAgent);
+            Controls.Add(dataGridViewAgents);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "AgentsForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Управление агентами";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAgents).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewAgents;
         private System.Windows.Forms.Button btnAddAgent;
+        private Button btnDelAgent;
     }
 }

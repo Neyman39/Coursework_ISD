@@ -12,7 +12,7 @@ namespace PROVERKA
 {
     public partial class AgentsForm : Form
     {
-        private readonly FacadeDB _facade;
+        private readonly IDBManager _facade;
         public AgentsForm()
         {
             InitializeComponent();
@@ -33,6 +33,42 @@ namespace PROVERKA
                 if (addForm.ShowDialog() == DialogResult.OK)
                 {
                     LoadAgents(); // Обновляем таблицу после добавления
+                }
+            }
+        }
+
+        private void btnDelAgent_Click(object sender, EventArgs e)
+        {
+            // Проверяем, выбран ли какой-то агент в таблице
+            if (dataGridViewAgents.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Пожалуйста, выберите агента для удаления",
+                              "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Получаем ID выбранного агента
+            var selectedRow = dataGridViewAgents.SelectedRows[0];
+            int agentId = (int)selectedRow.Cells["IdAgent"].Value;
+            string agentName = selectedRow.Cells["FullName"].Value.ToString();
+
+            var confirmResult = MessageBox.Show($"Вы уверены, что хотите удалить агента {agentName}?",
+                                             "Подтверждение удаления",
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                if (_facade.RemoveAgent(agentId))
+                {
+                    MessageBox.Show("Агент успешно удален",
+                                  "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadAgents();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось удалить агента",
+                                  "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

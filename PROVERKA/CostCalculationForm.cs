@@ -91,12 +91,17 @@ namespace PROVERKA
 
                 if (field.Type == "int")
                 {
-                    inputControl = new NumericUpDown
+                    //inputControl = new NumericUpDown
+                    //{
+                    //    Width = 200,
+                    //    Tag = field.IdField,
+                    //    Minimum = 0,
+                    //    Maximum = 1000000
+                    //};
+                    inputControl = new TextBox
                     {
                         Width = 200,
-                        Tag = field.IdField,
-                        Minimum = 0,
-                        Maximum = 1000000
+                        Tag = field.IdField
                     };
                 }
                 else if (field.Type == "date")
@@ -122,14 +127,37 @@ namespace PROVERKA
             }
         }
 
-        // Метод для получения значений полей
+        //private Dictionary<int, string> GetFieldValues()
+        //{
+        //    var values = new Dictionary<int, string>();
+
+        //    foreach (Control control in flowLayoutPanelFields.Controls)
+        //    {
+        //        if (control.Tag is int fieldId && !values.ContainsKey(fieldId)) // Проверяем, нет ли уже такого ключа
+        //        {
+        //            string value = control switch
+        //            {
+        //                TextBox txt => txt.Text,
+        //                NumericUpDown num => num.Value.ToString(),
+        //                ComboBox cmb => cmb.SelectedItem?.ToString(),
+        //                _ => string.Empty
+        //            };
+
+        //            if (!string.IsNullOrEmpty(value))
+        //                values.Add(fieldId, value);
+        //        }
+        //    }
+
+        //    return values;
+        //}
+
         private Dictionary<int, string> GetFieldValues()
         {
             var values = new Dictionary<int, string>();
 
             foreach (Control control in flowLayoutPanelFields.Controls)
             {
-                if (control.Tag is int fieldId && !values.ContainsKey(fieldId)) // Проверяем, нет ли уже такого ключа
+                if (control.Tag is int fieldId && !values.ContainsKey(fieldId))
                 {
                     string value = control switch
                     {
@@ -139,13 +167,22 @@ namespace PROVERKA
                         _ => string.Empty
                     };
 
-                    if (!string.IsNullOrEmpty(value))
-                        values.Add(fieldId, value);
+                    // Проверяем заполненность (например, для ComboBox считаем заполненным, только если выбрано что-то)
+                    bool isEmpty = string.IsNullOrEmpty(value);
+
+                    if (isEmpty)
+                    {
+                        string controlType = control.GetType().Name;
+                        throw new ArgumentException($"Поле с ID {fieldId} ({controlType}) не заполнено.");
+                    }
+
+                    values.Add(fieldId, value);
                 }
             }
 
             return values;
         }
+
 
         private bool ValidateInputs()
         {
@@ -169,9 +206,20 @@ namespace PROVERKA
                 var fieldValues = GetFieldValues();
                 int insuranceId = _selectedType.IdInsurance.Value;
 
+                //bool allFieldsFilled = fieldValues.Values.All(value => !string.IsNullOrWhiteSpace(value));
+
+                //if (!allFieldsFilled)
+                //{
+                //    MessageBox.Show("Не все поля заполнены!");
+                //    return;
+                //}
+
+                //MessageBox.Show($"Окак: {fieldValues.Values[1]}");
+
                 // Получаем выбранный тип страхования
                 if (comboBoxInsuranceType.SelectedItem is InsuranceType selectedType)
                 {
+                    
                     // Рассчитываем стоимость
                     decimal cost = _facade.CalculateInsuranceCost(
                         insuranceId,

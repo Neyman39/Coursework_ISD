@@ -13,7 +13,7 @@ namespace PROVERKA
     public partial class ClientForm : Form
     {
         private readonly int? _clientId;
-        private readonly FacadeDB _facade;
+        private readonly IDBClient _facade;
         private Form _loginForm;
 
         public ClientForm(int? clientId, Form loginForm)
